@@ -7,6 +7,8 @@ import {
 } from "../../utils/firebase/firebase.utils";
 import Button from "../button/Button";
 
+
+
 const defaultFormFields = {
   name: "",
   password: "",
@@ -18,15 +20,17 @@ const SignUpForm = () => {
   const [formFields, setFormFields] = useState("defaultFormFields");
   const { name, password, email, confirmPassword } = formFields;
 
+ 
+
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormFields({ ...formFields, [name]: value });
   };
 
-
-   const resetFields =()=>{
-     setFormFields(defaultFormFields);
-   }
+  const resetFields = () => {
+    setFormFields(defaultFormFields);
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
@@ -39,14 +43,15 @@ const SignUpForm = () => {
         email,
         password
       );
+
+    
       await createUserDocumentFromAuth(user, { name });
       resetFields();
-
     } catch (error) {
       if (error.code == "auth/email-already-in-use") {
         alert("email already exists");
-      }else{
-      console.log(error, "user wasnt created");
+      } else {
+        console.log(error, "user wasnt created");
       }
     }
   };
@@ -89,7 +94,6 @@ const SignUpForm = () => {
           value={confirmPassword}
         />
         <Button type="submit">Sign up</Button>
-      
       </form>
     </div>
   );
