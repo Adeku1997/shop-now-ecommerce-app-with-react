@@ -1,13 +1,17 @@
 import React from "react";
 import { ReactComponent as ShopIcon } from "../../assets/shopcart.svg";
-import { useContext } from "react";
-import { CartContext } from "../../context/cartContext";
+
+import { useDispatch, useSelector } from "react-redux";
+import { showCart } from "../../store/cart/cartAction";
+import { selectCartCount } from "../../store/cart/cartSelector";
 const CartIcon = () => {
-  const {showCart, setShowCart } = useContext(CartContext);
+  const dispatch = useDispatch();
+  const cartCount = useSelector(selectCartCount);
+
   return (
     <div className="cart-icon-component">
-      <ShopIcon onClick={() => setShowCart(!showCart)} className="shopping-icon" />
-      <span className="item-count">0</span>
+      <ShopIcon onClick={()=>dispatch(showCart)} className="shopping-icon" />
+      <span className="item-count">{cartCount}</span>
     </div>
   );
 };

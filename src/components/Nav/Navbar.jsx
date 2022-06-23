@@ -1,20 +1,22 @@
 import { Outlet, Link } from "react-router-dom";
 import React, { Fragment, useContext } from "react";
 import "./Navbar.styles.scss";
-import { UserContext } from "../../context/userContext";
-import { CartContext } from "../../context/cartContext";
+import { useSelector } from "react-redux";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 import CartIcon from "../cart-icon/CartIcon";
 import CartDropdown from "../cart-dropdown/CartDropdown";
 
-const Navbar = () => {
-  const { currentUser, setCurrentUser } = useContext(UserContext);
-  const {showCart } = useContext(CartContext)
+import { isCartOpen } from "../../store/cart/cartSelector";
+import { selectUser } from '../../store/user/userSelector';
 
-  const signOutHandler = async () => {
-    await signOutUser();
-    setCurrentUser(null);
-  };
+const Navbar = () => {
+  const currentUser = useSelector(selectUser);
+  const showCart  = useSelector(isCartOpen);
+
+  // const signOutHandler = async () => {
+  //   await signOutUser();
+  //   setCurrentUser(null);
+  // };
   return (
     <Fragment>
       <div className="navigation">
@@ -29,7 +31,7 @@ const Navbar = () => {
             shop
           </Link>
           {currentUser ? (
-            <span className="nav-link" onClick={signOutHandler}>
+            <span className="nav-link" onClick={signOutUser}>
               {" "}
               sign out
             </span>

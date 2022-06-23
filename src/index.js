@@ -4,9 +4,9 @@ import "./index.css";
 import App from "./App";
 import "@fontsource/sora";
 import { BrowserRouter } from "react-router-dom";
-import { UserProvider } from "./context/userContext";
-import { ProductProvider } from "./context/productContext";
-import { CartProvider } from "./context/cartContext";
+
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(
@@ -19,14 +19,10 @@ const container = document.getElementById("root");
 const root = createRoot(container);
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <UserProvider>
-        <ProductProvider>
-          <CartProvider>
-            <App />
-          </CartProvider>
-        </ProductProvider>
-      </UserProvider>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );

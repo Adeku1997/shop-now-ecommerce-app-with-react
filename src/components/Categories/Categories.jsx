@@ -39,7 +39,7 @@ const Categories = () => {
   return (
     <div className="categories-container">
       {categories.map((category) => (
-        <Category category={category} />
+        <Category key ={category.id}category={category} />
       ))}
     </div>
   );
