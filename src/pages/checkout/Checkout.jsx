@@ -1,19 +1,27 @@
-import React  from "react";
+import React, { useState } from "react";
+import { PaystackButton } from "react-paystack";
 
-import { useSelector,useDispatch } from "react-redux";
-import { selectCartItems, selectCartTotal } from "../../store/cart/cartSelector";
-import { addToCart, removeFromCart } from '../../store/cart/cartAction';
+import { useSelector, useDispatch } from "react-redux";
+import {
+  selectCartItems,
+  selectCartTotal,
+} from "../../store/cart/cartSelector";
+import { addToCart, removeFromCart } from "../../store/cart/cartAction";
 import CheckoutItem from "../../components/checkout-item/CheckoutItem";
-import './checkout.styles.scss';
+import "./checkout.styles.scss";
+import PaymentForm from "../../components/payment-form/PaymentForm";
+import Modal from "../../components/modal/Modal";
 
 const Checkout = () => {
   const cartItems = useSelector(selectCartItems);
   const dispatch = useDispatch();
+  const [show,setShow] = useState(false);
 
   const cartTotal = useSelector(selectCartTotal);
+
   return (
     <div className="checkout-container">
-       <div className="checkout-header">
+      <div className="checkout-header">
         <div className="header-block">
           <span>product</span>
         </div>
@@ -31,15 +39,17 @@ const Checkout = () => {
         <div className="header-block">
           {" "}
           <span>remove</span>
-        </div> 
+        </div>
       </div>
-      
-        {cartItems?.map((cartItem) => (
-          <CheckoutItem key ={cartItem.id} cartItem={cartItem}/>
-        ))}
-      <span className="total">{cartTotal}</span>
+
+      {cartItems?.map((cartItem) => (
+        <CheckoutItem key={cartItem.id} cartItem={cartItem} />
+      ))}
+      <span className="total">${cartTotal}</span>
+      <PaymentForm setShow={setShow} />
+      {/* <Modal show={show} setShow={setShow}/> */}
     </div>
-  );    
+  );
 };
 
 export default Checkout;

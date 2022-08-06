@@ -15,6 +15,18 @@ import { onAuthStateChangedListener ,createUserDocumentFromAuth} from './utils/f
 
 const App = () => {
   const dispatch = useDispatch();
+  // const [isDesktop, setDesktop] = useState(window.innerWidth > 800);
+
+  //  const updateMedia = () => {
+  //    setDesktop(window.innerWidth > 800);
+  //  };
+
+  //  useEffect(() => {
+  //    window.addEventListener("resize", updateMedia);
+
+  //    return () => window.removeEventListener("resize", updateMedia);
+  //  }, []);
+
     useEffect(() => {
       const unsubscribe = onAuthStateChangedListener((user) => {
         if (user) {
