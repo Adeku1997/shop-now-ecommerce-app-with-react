@@ -11,6 +11,10 @@
     font-size: 28px;
     margin-bottom: 25px;
     cursor: pointer;
+
+    @media(max-width :800px){
+      font-size:21px;
+    }
   }
 
   .preview {

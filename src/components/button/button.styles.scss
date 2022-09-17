@@ -15,6 +15,13 @@
   cursor: pointer;
   display: flex;
   justify-content: center;
+  align-items: center;
+
+  @media(max-width :800px){
+     height:34px;
+     line-height: 13px;
+     font-size: 12px;
+  }
 
   &:hover {
     background-color: white;
