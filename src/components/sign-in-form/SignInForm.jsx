@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./SignInForm.styles.scss";
+import {useNavigate} from 'react-router-dom'
 import FormInput from "../form-input/FormInput";
+
 import {
   signInWithGooglePopup,
   createUserDocumentFromAuth,
@@ -17,13 +19,12 @@ const defaultFormFields = {
 const SignInForm = () => {
   const [formFields, setFormFields] = useState("defaultFormFields");
   const { password, email } = formFields;
-
-  // const { setCurrentUser } = useContext(UserContext);
+  const navigate = useNavigate()
 
   const signInWithGoogle = async () => {
-      await signInWithGooglePopup();
-  
-    
+      await signInWithGooglePopup();  
+            navigate('/')
+
   };
 
   const handleChange = (e) => {
@@ -43,8 +44,12 @@ const SignInForm = () => {
         password
       );
       
-
+      console.log(user , "loggedinUser")
+     if (user) {
+      navigate('/')
+     }
       resetFields();
+      
     } catch (error) {
       if (error.code === "auth/wrong-password") {
         alert("incorrect password");

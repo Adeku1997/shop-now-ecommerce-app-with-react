@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { PaystackButton } from "react-paystack";
-
+import Paystack from "../../utils/paystack/Paystack";
 import { useSelector, useDispatch } from "react-redux";
 import {
   selectCartItems,
@@ -19,6 +18,10 @@ const Checkout = () => {
 
   const cartTotal = useSelector(selectCartTotal);
 
+  const payWithPaystack = () =>{
+
+  }
+
   return (
     <div className="checkout-container">
       <div className="checkout-header">
@@ -26,11 +29,11 @@ const Checkout = () => {
           <span className="table-header">product</span>
         </div>
         <div className="header-block">
-          <span className="table-header">description</span>
+          <span className="table-header">desc</span>
         </div>
         <div className="header-block">
           {" "}
-          <span className="table-header">quantity</span>
+          <span className="table-header">qty</span>
         </div>
         <div className="header-block">
           {" "}
@@ -45,9 +48,8 @@ const Checkout = () => {
       {cartItems?.map((cartItem) => (
         <CheckoutItem key={cartItem.id} cartItem={cartItem} />
       ))}
-      <span className="total">${cartTotal}</span>
-      <PaymentForm setShow={setShow} />
-      {/* <Modal show={show} setShow={setShow}/> */}
+      <span className="total">#{cartTotal}</span>
+      <PaymentForm setShow={setShow} total = {cartTotal} />
     </div>
   );
 };
