@@ -13,7 +13,8 @@ import { getFirestore, doc, getDoc, setDoc ,collection,writeBatch,query,getDocs}
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey:process.env.REACT_APP_FIREBASE_KEY, 
+  apiKey: "AIzaSyAA1NKjpz6PcSoZs3ZsMx2bLvgYZnlc1BQ",
+  // apiKey:process.env.REACT_APP_FIREBASE_KEY, 
   authDomain: "shop-now-db.firebaseapp.com",
   projectId: "shop-now-db",
   storageBucket: "shop-now-db.appspot.com",
