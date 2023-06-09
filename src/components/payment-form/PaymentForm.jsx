@@ -1,5 +1,4 @@
 import React from "react";
-import { CardElement } from "@stripe/react-stripe-js";
 import './payment.style.scss';
 import PaystackPop from '@paystack/inline-js'
 import { useSelector } from "react-redux";
