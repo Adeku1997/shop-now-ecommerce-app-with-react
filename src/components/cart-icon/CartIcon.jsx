@@ -4,6 +4,7 @@ import { ReactComponent as ShopIcon } from "../../assets/shopcart.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { showCart } from "../../store/cart/cartAction";
 import { selectCartCount } from "../../store/cart/cartSelector";
+ import "./carticon.styles.scss"
 const CartIcon = () => {
   const dispatch = useDispatch();
   const cartCount = useSelector(selectCartCount);

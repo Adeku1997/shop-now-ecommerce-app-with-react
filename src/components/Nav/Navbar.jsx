@@ -13,15 +13,12 @@ const Navbar = () => {
   const currentUser = useSelector(selectUser);
   const showCart  = useSelector(isCartOpen);
 
-  // const signOutHandler = async () => {
-  //   await signOutUser();
-  //   setCurrentUser(null);
-  // };
+  
   return (
     <Fragment>
       <div className="navigation">
         <Link className="logo-container" to="/">
-          <div>
+          <div className="title">
             Shop<span>Now</span>
           </div>
         </Link>

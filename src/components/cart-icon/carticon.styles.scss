@@ -1,4 +1,4 @@
-.cart-icon-container {
+.cart-icon-component {
   width: 45px;
   height: 45px;
   position: relative;
@@ -8,8 +8,13 @@
   cursor: pointer;
 
   .shopping-icon {
-    width: 24px;
-    height: 24px;
+    width: 35px;
+    height: 35px;
+
+    @media(max-width:800px){
+      width: 20px;
+        height: 20px;
+    }
   }
 
 //   .item-count {

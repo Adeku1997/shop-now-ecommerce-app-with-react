@@ -14,11 +14,14 @@
     width: 100%;
     padding: 10px 0;
     display: flex;
+    
 
     @media (max-width: 800px) {
       width: 100%;
       display: flex;
       padding: 0;
+      display: flex;
+      justify-content: center;
     }
 
     .header-block {
@@ -27,12 +30,13 @@
       // border: 1px solid red;
 
       @media (max-width: 800px) {
-        width: auto;
+        
 
         .table-header {
           padding: 0;
           display: inline-block;
           margin: 3px 8px;
+          font-size: 12px;
         }
       }
 
@@ -46,5 +50,9 @@
     margin-top: 30px;
     margin-left: auto;
     font-size: 36px;
+
+    @media(max-width:800px){
+      font-size: 20px;
+    }
   }
 }

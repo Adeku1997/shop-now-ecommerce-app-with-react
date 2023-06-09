@@ -1,31 +1,32 @@
-.category-link{
-  display: inline-block;
+.category-link {
+  @media (max-width: 800px) {
+    display: block;
     min-width: 30%;
-
-}
-
-.category-mens{
-  display: inline-block;
+  }
 }
 
 .category-container {
-  min-width: 30%;
-  height: 240px;
-  flex: 1 1 auto;
+  height: 290px;
+  // flex: 1 1 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid black;
-  margin: 0 7.5px 15px;
+  margin: 0 7.5px 40px;
   overflow: hidden;
+  width: 20vw;
 
-  
-  @media(max-width : 800px) {
-    // border:1px solid red;
-
+  @media (max-width: 800px) {
+    height: 200px;
+    flex: 1 1 auto;
+    width: 42vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    margin: 0 7.5px 15px;
+    overflow: hidden;
   }
-
-
 
   &:hover {
     cursor: pointer;
@@ -52,8 +53,8 @@
     margin-left: 7.5px;
   }
 
-   @media (max-width : 800px){
-    height:200px;
+  @media (max-width: 800px) {
+    height: 200px;
   }
 
   .background-image {
@@ -75,16 +76,20 @@
     opacity: 0.7;
     position: absolute;
 
+    @media (max-width: 800px) {
+      padding: 0 10px;
+    }
+
     h2 {
       font-weight: bold;
       margin: 0 6px 0;
-      font-size: 22px;
+      font-size: 16px;
       color: #4a4a4a;
     }
 
     p {
       font-weight: lighter;
-      font-size: 16px;
+      font-size: 12px;
     }
   }
 }

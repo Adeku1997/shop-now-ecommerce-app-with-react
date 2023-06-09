@@ -4,7 +4,7 @@ import "./category.styles.scss";
 
 const Category = ({ category: { title, id, imageUrl } }) => {
   return (
-    <Link to={`/shop/${title}`} className={`${title} === 'mens'  ? category-mens : category-link`}>
+    <Link to={`/shop/${title}`} >
       <div className="category-container">
           <div
           className="background-image"
