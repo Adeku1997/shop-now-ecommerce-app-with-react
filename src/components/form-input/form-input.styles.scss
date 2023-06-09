@@ -47,6 +47,10 @@ $main-color: black;
     top: 10px;
     transition: 300ms ease all;
 
+    @media(max-width : 800px){
+          font-size: 11px;
+    }
+
     &.shrink {
       @include shrinkLabel();
     }
