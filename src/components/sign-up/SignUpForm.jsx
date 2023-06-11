@@ -32,15 +32,18 @@ const SignUpForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-   if(password !== confirmPassword){
-        toast("passwords do not match");
-   }
+    if (password !== confirmPassword) {
+      toast("passwords do not match");
+    }
 
     try {
       const { user } = await createAuthUserWithEmailAndPassword(
         email,
         password
       );
+      if (user) {
+        toast("user created successfully");
+      }
 
       await createUserDocumentFromAuth(user, { name });
       resetFields();
