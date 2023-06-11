@@ -6,8 +6,8 @@ import {
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 import Button from "../button/Button";
-
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const defaultFormFields = {
   name: "",
@@ -20,9 +20,6 @@ const SignUpForm = () => {
   const [formFields, setFormFields] = useState("defaultFormFields");
   const { name, password, email, confirmPassword } = formFields;
 
- 
-
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormFields({ ...formFields, [name]: value });
@@ -31,12 +28,13 @@ const SignUpForm = () => {
   const resetFields = () => {
     setFormFields(defaultFormFields);
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      alert("passwords do not match");
-      return;
-    }
+
+   if(password !== confirmPassword){
+        toast("passwords do not match");
+   }
 
     try {
       const { user } = await createAuthUserWithEmailAndPassword(
@@ -44,12 +42,11 @@ const SignUpForm = () => {
         password
       );
 
-    
       await createUserDocumentFromAuth(user, { name });
       resetFields();
     } catch (error) {
-      if (error.code == "auth/email-already-in-use") {
-        alert("email already exists");
+      if (error.code === "auth/email-already-in-use") {
+        toast("email already exists");
       } else {
         console.log(error, "user wasnt created");
       }
@@ -93,6 +90,7 @@ const SignUpForm = () => {
           name="confirmPassword"
           value={confirmPassword}
         />
+        <ToastContainer />
         <Button type="submit">Sign up</Button>
       </form>
     </div>
